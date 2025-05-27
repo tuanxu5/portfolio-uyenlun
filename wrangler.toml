@@ -1,3 +1,9 @@
 name = "tuanxu5"
 compatibility_date = "2024-10-01"
 pages_build_output_dir = "dist"
+
+[build]
+command = "yarn run build"
+
+[vars]
+NODE_VERSION = "18.18.2"

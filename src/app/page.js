@@ -1,7 +1,7 @@
 // pages/index.js
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 
@@ -10,9 +10,14 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsVisible(true);
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      setIsVisible(true);
+    }, 2500);
 
     const handleScroll = () => {
       const sections = ["home", "about", "experience", "skills", "projects", "contact"];
@@ -33,7 +38,10 @@ export default function Home() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(timer);
+    };
   }, []);
 
   const scrollToSection = (sectionId) => {
@@ -183,6 +191,109 @@ export default function Home() {
     },
   ];
 
+  // Loading Component
+  const LoadingScreen = () => (
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+      className="fixed inset-0 z-50 bg-gradient-to-br from-pink-50 via-purple-50 via-blue-50 via-cyan-50 via-green-50 via-yellow-50 to-orange-50 flex items-center justify-center"
+    >
+      <div className="text-center">
+        {/* Main Logo Animation */}
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="mb-8"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 via-blue-500 via-cyan-500 via-green-500 via-yellow-500 to-orange-500 bg-clip-text text-transparent">
+            UYEN PHAM
+          </h1>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-lg text-gray-600 mt-2"
+          >
+            Backend Developer
+          </motion.p>
+        </motion.div>
+
+        {/* Loading Animation */}
+        <div className="flex items-center justify-center space-x-2 mb-6">
+          {[0, 1, 2, 3, 4].map((index) => (
+            <motion.div
+              key={index}
+              initial={{ scale: 0 }}
+              animate={{ scale: [0, 1, 0] }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                delay: index * 0.2,
+                ease: "easeInOut",
+              }}
+              className="w-3 h-3 rounded-full"
+              style={{
+                background: `linear-gradient(45deg, 
+                  ${
+                    index === 0
+                      ? "#ec4899"
+                      : index === 1
+                      ? "#a855f7"
+                      : index === 2
+                      ? "#3b82f6"
+                      : index === 3
+                      ? "#06b6d4"
+                      : "#10b981"
+                  })`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Loading Progress Bar */}
+        <div className="w-64 h-1 bg-gray-200 rounded-full mx-auto mb-4">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 2.5, ease: "easeInOut" }}
+            className="h-full bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full"
+          />
+        </div>
+
+        {/* Loading Text */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="text-gray-500 text-sm"
+        >
+          Loading amazing things...
+        </motion.p>
+      </div>
+    </motion.div>
+  );
+
+  if (isLoading) {
+    return (
+      <>
+        <Head>
+          <title>Pham Thi Uyen - Backend Developer Portfolio</title>
+          <meta
+            name="description"
+            content="Backend Developer specializing in Node.js, NestJS, and scalable web applications"
+          />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <AnimatePresence>
+          <LoadingScreen />
+        </AnimatePresence>
+      </>
+    );
+  }
+
   return (
     <>
       <Head>
@@ -195,7 +306,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 via-blue-50 via-cyan-50 via-green-50 via-yellow-50 to-orange-50">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 via-blue-50 via-cyan-50 via-green-50 via-yellow-50 to-orange-50"
+      >
         {/* Navigation */}
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -652,9 +768,9 @@ export default function Home() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
                       viewport={{ once: true }}
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.08, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 bg-gradient-to-r from-gray-100 to-gray-200 hover:from-purple-100 hover:to-pink-100 rounded-full text-sm font-medium text-gray-700 hover:text-purple-700 border border-gray-300 hover:border-purple-300 transition-all duration-300 cursor-pointer"
+                      className="px-5 py-2.5 bg-gradient-to-r from-white to-gray-50 hover:from-purple-100 hover:via-pink-100 hover:to-blue-100 rounded-full text-sm font-medium text-gray-700 hover:text-purple-700 border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all duration-500 cursor-pointer"
                     >
                       {skill}
                     </motion.button>
@@ -967,7 +1083,7 @@ export default function Home() {
             </motion.div>
           </div>
         )}
-      </div>
+      </motion.div>
 
       <style jsx global>{`
         html {

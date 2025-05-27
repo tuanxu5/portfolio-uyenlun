@@ -26,5 +26,8 @@
     "postcss": "^8.4.31",
     "tailwindcss": "^4"
   },
+  "engines": {
+    "node": ">=18.18.0"
+  },
   "packageManager": "yarn@4.7.0"
 }
