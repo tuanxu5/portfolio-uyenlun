@@ -388,7 +388,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-pink-500 via-purple-500 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
+                <h2 className="text-4xl font-bold text-center mt-10 mb-16 bg-gradient-to-r from-pink-500 via-purple-500 via-blue-500 to-cyan-500 bg-clip-text text-transparent">
                   About Me
                 </h2>
 
@@ -423,7 +423,7 @@ export default function Home() {
                       description:
                         "Expert in Node.js, NestJS, Express.js. Building RESTful APIs, GraphQL endpoints, and microservices architecture.",
                       icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
-                      gradient: "from-purple-200 to-pink-200",
+                      gradient: "from-purple-300 to-pink-300",
                     },
                     {
                       title: "Database & Architecture",
@@ -443,22 +443,22 @@ export default function Home() {
                       title: "Learning & Growth",
                       description:
                         "Continuously learning new technologies like cloud services (AWS, Google Cloud), advanced database concepts, and modern development practices. Currently exploring AI/ML integration in backend systems.",
-                      icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
-                      gradient: "from-green-500 to-yellow-500",
+                      icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+                      gradient: "from-indigo-300 to-purple-300",
                     },
                     {
                       title: "Career Aspirations",
                       description:
                         "Aiming to become a Senior Backend Engineer, contributing to large-scale systems and mentoring junior developers. Interested in system architecture, performance optimization, and leading technical teams.",
-                      icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
-                      gradient: "from-green-500 to-yellow-500",
+                      icon: "M13 10V3L4 14h7v7l9-11h-7z",
+                      gradient: "from-orange-300 to-red-300",
                     },
                     {
                       title: "Values & Approach",
                       description:
                         "Believes in clean code, thorough testing, and comprehensive documentation. Values collaboration, continuous improvement, and building solutions that solve real-world problems effectively.",
-                      icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
-                      gradient: "from-green-500 to-yellow-500",
+                      icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+                      gradient: "from-pink-300 to-rose-300",
                     },
                   ].map((competency, index) => (
                     <motion.div
@@ -490,7 +490,7 @@ export default function Home() {
             id="experience"
             className="py-20 px-4 bg-gradient-to-r from-pink-50/30 via-purple-50/30 via-blue-50/30 to-cyan-50/30"
           >
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto mt-10">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -641,7 +641,7 @@ export default function Home() {
           </section>
           {/* Skills Section */}
           <section id="skills" className="py-20 px-4">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto mt-10">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -665,7 +665,7 @@ export default function Home() {
                         viewport={{ once: true }}
                         // whileHover={{ scale: 1.08, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-6 py-3 bg-gradient-to-r hover:from-purple-100 hover:via-pink-100 hover:to-blue-100 rounded-full text-sm font-medium hover:text-purple-700 border  border-gray-400 hover:border-purple-300 hover:shadow-lg transition-all duration-250 cursor-pointer"
+                        className="px-6 py-3.5 bg-gradient-to-r hover:from-purple-100 hover:via-pink-100 hover:to-blue-100 rounded-full text-sm font-medium hover:text-purple-700 border  border-gray-400 hover:border-purple-300 hover:shadow-lg transition-all duration-250 cursor-pointer"
                       >
                         {skill}
                       </motion.button>
@@ -681,7 +681,7 @@ export default function Home() {
           </section>
           {/* Projects Section */}
           <section id="projects" className="py-20 px-4">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto mt-10">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -758,7 +758,7 @@ export default function Home() {
             </div>
           </section>
           <section id="contact" className="py-20 px-4">
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-4xl mx-auto text-center mt-10">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -780,7 +780,7 @@ export default function Home() {
                       title: "Email",
                       content: "thiuyen1132004@gmail.com",
                       href: "mailto:thiuyen1132004@gmail.com",
-                      gradient: "from-purple-300 to-pink-300",
+                      gradient: "from-indigo-300 to-purple-300",
                     },
                     {
                       icon: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z",
@@ -794,7 +794,7 @@ export default function Home() {
                       title: "Location",
                       content: "My Dinh, Nam Tu Liem\nHanoi, Vietnam",
                       href: null,
-                      gradient: "from-green-300 to-yellow-300",
+                      gradient: "from-orange-300 to-red-300",
                     },
                   ].map((contact, index) => (
                     <motion.div
@@ -804,7 +804,7 @@ export default function Home() {
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.05, y: -5 }}
-                      className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-sm hover:shadow-xl transition-all duration-300"
+                      className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
                     >
                       <div
                         className={`w-12 h-12 bg-gradient-to-r ${contact.gradient} rounded-xl flex items-center justify-center mx-auto mb-4`}
@@ -817,12 +817,12 @@ export default function Home() {
                       {contact.href ? (
                         <a
                           href={contact.href}
-                          className="text-purple-500 hover:text-purple-600 transition-colors duration-200 break-all"
+                          className="text-sm text-gray-600 hover:text-purple-600 transition-colors duration-200 break-all"
                         >
                           {contact.content}
                         </a>
                       ) : (
-                        <p className="text-purple-500 hover:text-purple-600 transition-colors duration-200 break-all">
+                        <p className="text-sm text-gray-600 hover:text-purple-600 transition-colors duration-200 break-all">
                           {contact.content}
                         </p>
                       )}
