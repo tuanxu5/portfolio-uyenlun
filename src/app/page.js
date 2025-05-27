@@ -68,6 +68,27 @@ export default function Home() {
     }
   };
 
+  // Optimized animation variants
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.5, ease: [0.25, 0.25, 0.25, 1] },
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const fadeInScale = {
+    initial: { opacity: 0, scale: 0.95 },
+    animate: { opacity: 1, scale: 1 },
+    transition: { duration: 0.4, ease: "easeOut" },
+  };
+
   const allSkills = [
     "JavaScript",
     "PHP",
@@ -195,8 +216,6 @@ export default function Home() {
         "Backend Architect - Designed the microservices architecture, implemented message queuing systems, and optimized data processing pipelines.",
     },
   ];
-
-  // Loading Screen Component
 
   return (
     <>
@@ -327,7 +346,7 @@ export default function Home() {
           {/* Hero Section */}
           <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-20">
             <div className="max-w-4xl mx-auto text-center">
-              <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+              <motion.div {...fadeInUp} transition={{ duration: 0.8 }}>
                 <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
                   PHAM THI UYEN
                 </h1>
@@ -376,14 +395,15 @@ export default function Home() {
               </div>
             </motion.div>
           </section>
+
           {/* About Section */}
           <section id="about" className="py-20 px-4">
             <div className="max-w-6xl mx-auto">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+                {...fadeInUp}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6 }}
               >
                 <h2 className="text-4xl font-bold text-center mt-10 mb-16 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
                   About Me
@@ -392,7 +412,12 @@ export default function Home() {
                 <div className="grid lg:grid-cols-3 gap-8 mb-12">
                   <div className="lg:col-span-3">
                     <h3 className="text-2xl font-semibold text-gray-800 mb-6">Personal Introduction</h3>
-                    <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <motion.div
+                      {...fadeInScale}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-200/50 shadow-sm hover:shadow-lg transition-all duration-300"
+                    >
                       <p className="text-gray-700 leading-relaxed mb-4">
                         Hello! I&apos;m Uyen, a passionate Backend Developer with a strong foundation in building
                         scalable web applications and robust API systems. My journey in technology began during my
@@ -410,10 +435,16 @@ export default function Home() {
                         projects, and staying updated with the latest industry trends. I believe in writing clean,
                         maintainable code and creating solutions that make a real impact.
                       </p>
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <motion.div
+                  variants={staggerContainer}
+                  whileInView="animate"
+                  viewport={{ once: true, amount: 0.2 }}
+                  className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
                   {[
                     {
                       title: "Backend Development",
@@ -460,10 +491,7 @@ export default function Home() {
                   ].map((competency, index) => (
                     <motion.div
                       key={competency.title}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8 }}
-                      viewport={{ once: true }}
+                      variants={fadeInUp}
                       className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-200/50 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
                     >
                       <div
@@ -477,10 +505,11 @@ export default function Home() {
                       <p className="text-gray-600 text-sm leading-relaxed">{competency.description}</p>
                     </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </motion.div>
             </div>
           </section>
+
           {/* Experience Section */}
           <section
             id="experience"
@@ -488,10 +517,10 @@ export default function Home() {
           >
             <div className="max-w-6xl mx-auto mt-10">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                {...fadeInUp}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.6 }}
               >
                 <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-500 via-blue-500 via-cyan-500 to-green-500 bg-clip-text text-transparent">
                   Experience & Education
@@ -499,7 +528,12 @@ export default function Home() {
 
                 <div className="space-y-8">
                   {/* Work Experience */}
-                  <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 md:p-8 border border-gray-200/50 shadow-sm">
+                  <motion.div
+                    {...fadeInScale}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 md:p-8 border border-gray-200/50 shadow-sm"
+                  >
                     <div className="flex items-center mb-6">
                       <div className="w-3 h-3 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 rounded-full mr-4"></div>
                       <h3 className="text-2xl font-semibold text-gray-800">Work Experience</h3>
@@ -518,7 +552,12 @@ export default function Home() {
                           </div>
                         </div>
 
-                        <div className="grid gap-3 mb-4">
+                        <motion.div
+                          variants={staggerContainer}
+                          whileInView="animate"
+                          viewport={{ once: false, amount: 0.3 }}
+                          className="grid gap-3 mb-4"
+                        >
                           {[
                             "Developed and optimized RESTful APIs using Express.js and NestJS framework for multiple client projects",
                             "Integrated MongoDB for efficient data storage and management across 4+ production applications",
@@ -528,19 +567,12 @@ export default function Home() {
                             "Integrated payment gateways (Stripe, Cryptomus) and implemented secure transaction processing",
                             "Optimized database queries resulting in 40% improvement in application response times",
                           ].map((item, index) => (
-                            <motion.div
-                              key={index}
-                              initial={{ opacity: 0, x: -20 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.5, delay: index * 0.1 }}
-                              viewport={{ once: true }}
-                              className="flex items-start space-x-3"
-                            >
+                            <motion.div key={index} variants={fadeInUp} className="flex items-start space-x-3">
                               <div className="w-1.5 h-1.5 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 rounded-full mt-2 flex-shrink-0"></div>
                               <p className="text-gray-700 text-sm">{item}</p>
                             </motion.div>
                           ))}
-                        </div>
+                        </motion.div>
 
                         <div className="flex flex-wrap gap-2">
                           {[
@@ -564,10 +596,15 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Education */}
-                  <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 md:p-8 border border-gray-200/50 shadow-sm">
+                  <motion.div
+                    {...fadeInScale}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 md:p-8 border border-gray-200/50 shadow-sm"
+                  >
                     <div className="flex items-center mb-6">
                       <div className="w-3 h-3 bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 rounded-full mr-4"></div>
                       <h3 className="text-2xl font-semibold text-gray-800">Education</h3>
@@ -588,7 +625,12 @@ export default function Home() {
                           </div>
                         </div>
 
-                        <div className="grid gap-3 mb-4">
+                        <motion.div
+                          variants={staggerContainer}
+                          whileInView="animate"
+                          viewport={{ once: false, amount: 0.3 }}
+                          className="grid gap-3 mb-4"
+                        >
                           {[
                             "Graduated with distinction - GPA: 3.56/4.0",
                             "Specialized in Software Engineering and Database Management",
@@ -596,19 +638,12 @@ export default function Home() {
                             "Active member of Programming Club and participated in coding competitions",
                             "Relevant coursework: Data Structures & Algorithms, Database Design, Web Development, Software Engineering",
                           ].map((item, index) => (
-                            <motion.div
-                              key={index}
-                              initial={{ opacity: 0, x: -20 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.5, delay: index * 0.1 }}
-                              viewport={{ once: true }}
-                              className="flex items-start space-x-3"
-                            >
+                            <motion.div key={index} variants={fadeInUp} className="flex items-start space-x-3">
                               <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 rounded-full mt-2 flex-shrink-0"></div>
                               <p className="text-gray-700 text-sm">{item}</p>
                             </motion.div>
                           ))}
-                        </div>
+                        </motion.div>
 
                         <div className="flex flex-wrap gap-2">
                           {[
@@ -630,72 +665,84 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
           </section>
+
           {/* Skills Section */}
           <section id="skills" className="py-20 px-4">
             <div className="max-w-6xl mx-auto mt-10">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                {...fadeInUp}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.6 }}
               >
                 <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-500 via-cyan-500 via-green-500 to-yellow-500 bg-clip-text text-transparent">
                   Technical Skills
                 </h2>
 
-                <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 md:p-8 border border-gray-200/50 shadow-sm">
+                <motion.div
+                  {...fadeInScale}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 md:p-8 border border-gray-200/50 shadow-sm"
+                >
                   <p className="text-gray-600 text-center mb-8 text-lg">Technologies and tools I work with</p>
 
-                  <div className="flex flex-wrap justify-start gap-3">
+                  <motion.div
+                    variants={staggerContainer}
+                    whileInView="animate"
+                    viewport={{ once: false, amount: 0.2 }}
+                    className="flex flex-wrap justify-start gap-3"
+                  >
                     {allSkills.map((skill, index) => (
                       <motion.button
                         key={skill}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: index * 0.05 }}
-                        viewport={{ once: true }}
-                        // whileHover={{ scale: 1.08, y: -2 }}
+                        variants={fadeInScale}
+                        whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         className="px-6 py-3.5 bg-gradient-to-r hover:from-purple-100 hover:via-pink-100 hover:to-blue-100 rounded-full text-sm font-medium hover:text-purple-700 border  border-gray-400 hover:border-purple-300 hover:shadow-lg transition-all duration-250 cursor-pointer"
                       >
                         {skill}
                       </motion.button>
                     ))}
-                  </div>
+                  </motion.div>
 
                   <div className="mt-8 text-center">
                     <p className="text-gray-500 text-sm">Always learning and expanding my skill set</p>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             </div>
           </section>
+
           {/* Projects Section */}
           <section id="projects" className="py-20 px-4">
             <div className="max-w-6xl mx-auto mt-10">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                {...fadeInUp}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.6 }}
               >
                 <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-green-500 via-yellow-500 via-orange-500 to-pink-500 bg-clip-text text-transparent">
                   Featured Projects
                 </h2>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <motion.div
+                  variants={staggerContainer}
+                  whileInView="animate"
+                  viewport={{ once: false, amount: 0.2 }}
+                  className="grid md:grid-cols-2 gap-8"
+                >
                   {projects.map((project, index) => (
                     <motion.div
                       key={project.title}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
+                      variants={fadeInUp}
+                      whileHover={{ y: -5, scale: 1.02 }}
                       className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-200/50 hover:border-purple-300/50 transition-all duration-300 group shadow-sm hover:shadow-md"
                     >
                       <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-purple-500 transition-colors duration-200">
@@ -707,18 +754,6 @@ export default function Home() {
                       </div>
 
                       <p className="text-gray-600 mb-4 text-sm leading-relaxed">{project.description}</p>
-
-                      {/* <div className="flex flex-wrap gap-2 mb-4">
-                        {project.techStack.map((tech) => (
-                          <span
-                            key={tech}
-                            // className="px-2 py-1 bg-gradient-to-r from-blue-100 via-cyan-100 to-green-100 rounded-lg text-xs text-blue-700 border border-blue-200"
-                            className="px-2 py-1 bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 rounded-lg text-xs text-purple-700 border border-purple-200"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div> */}
 
                       <div className="flex flex-col sm:flex-row gap-3">
                         <button
@@ -749,17 +784,19 @@ export default function Home() {
                       </div>
                     </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </motion.div>
             </div>
           </section>
+
+          {/* Contact Section */}
           <section id="contact" className="py-20 px-4">
             <div className="max-w-4xl mx-auto text-center mt-10">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+                {...fadeInUp}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.6 }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-orange-500 via-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
                   Let&apos;s Work Together
@@ -769,7 +806,12 @@ export default function Home() {
                   can bring your ideas to life.
                 </p>
 
-                <div className="grid md:grid-cols-3 gap-6 mb-12">
+                <motion.div
+                  variants={staggerContainer}
+                  whileInView="animate"
+                  viewport={{ once: false, amount: 0.2 }}
+                  className="grid md:grid-cols-3 gap-6 mb-12"
+                >
                   {[
                     {
                       icon: "M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
@@ -795,10 +837,7 @@ export default function Home() {
                   ].map((contact, index) => (
                     <motion.div
                       key={contact.title}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
+                      variants={fadeInUp}
                       whileHover={{ scale: 1.05, y: -5 }}
                       className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-200/50 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
                     >
@@ -824,16 +863,18 @@ export default function Home() {
                       )}
                     </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </motion.div>
             </div>
           </section>
+
           {/* Footer */}
           <footer className="py-8 px-4">
             <div className="max-w-6xl mx-auto text-center">
               <p className="text-gray-500">❤️&nbsp;Portfolio UyenLun❤️</p>
             </div>
           </footer>
+
           {/* Project Detail Modal */}
           {selectedProject && (
             <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -841,6 +882,7 @@ export default function Home() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
               >
                 <div className="p-6">
