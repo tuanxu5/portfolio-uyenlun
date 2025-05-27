@@ -77,9 +77,8 @@ export default function Home() {
     "Express.js",
     "Laravel",
     "NextJS",
-    "MongoDB",
     "MySQL",
-    "MS SQL Server",
+    "MongoDB",
     "Redis",
     "Git",
     "GitHub",
@@ -87,17 +86,7 @@ export default function Home() {
     "Socket.IO",
     "GraphQL",
     "Figma",
-    "Stripe",
-    "Cryptomus",
-    "Node.js",
-    "TypeScript",
-    "RESTful APIs",
-    "Microservices",
-    "Linux",
-    "Nginx",
     "Postman",
-    "JWT",
-    "OAuth",
   ];
 
   const projects = [
@@ -314,13 +303,21 @@ export default function Home() {
                       <button
                         key={section}
                         onClick={() => scrollToSection(section)}
-                        className={`block w-full text-left capitalize transition-colors duration-200 font-medium py-2 ${
+                        className={`block w-full text-left capitalize transition-colors duration-200 font-medium py-2 text-sm ${
                           activeSection === section ? "text-purple-600" : "text-gray-600 hover:text-gray-900"
                         }`}
                       >
                         {section}
                       </button>
                     ))}
+
+                    <a
+                      href="https://cv.uyenlun.com/"
+                      target="_blank"
+                      className="px-5 py-3.5 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-purple-700 border border-purple-200 text-sm font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105"
+                    >
+                      Curriculum Vitae
+                    </a>
                   </div>
                 </motion.div>
               )}
@@ -384,7 +381,7 @@ export default function Home() {
             <div className="max-w-6xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
@@ -395,7 +392,7 @@ export default function Home() {
                 <div className="grid lg:grid-cols-3 gap-8 mb-12">
                   <div className="lg:col-span-3">
                     <h3 className="text-2xl font-semibold text-gray-800 mb-6">Personal Introduction</h3>
-                    <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
                       <p className="text-gray-700 leading-relaxed mb-4">
                         Hello! I&apos;m Uyen, a passionate Backend Developer with a strong foundation in building
                         scalable web applications and robust API systems. My journey in technology began during my
@@ -463,12 +460,11 @@ export default function Home() {
                   ].map((competency, index) => (
                     <motion.div
                       key={competency.title}
-                      initial={{ opacity: 0, y: 50 }}
+                      initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.2 }}
+                      transition={{ duration: 0.8 }}
                       viewport={{ once: true }}
-                      whileHover={{ scale: 1.05, y: -10 }}
-                      className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+                      className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-200/50 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
                     >
                       <div
                         className={`w-12 h-12 bg-gradient-to-r ${competency.gradient} rounded-xl flex items-center justify-center mb-4`}
@@ -503,7 +499,7 @@ export default function Home() {
 
                 <div className="space-y-8">
                   {/* Work Experience */}
-                  <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-sm">
+                  <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 md:p-8 border border-gray-200/50 shadow-sm">
                     <div className="flex items-center mb-6">
                       <div className="w-3 h-3 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 rounded-full mr-4"></div>
                       <h3 className="text-2xl font-semibold text-gray-800">Work Experience</h3>
@@ -571,7 +567,7 @@ export default function Home() {
                   </div>
 
                   {/* Education */}
-                  <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-sm">
+                  <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 md:p-8 border border-gray-200/50 shadow-sm">
                     <div className="flex items-center mb-6">
                       <div className="w-3 h-3 bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 rounded-full mr-4"></div>
                       <h3 className="text-2xl font-semibold text-gray-800">Education</h3>
@@ -652,7 +648,7 @@ export default function Home() {
                   Technical Skills
                 </h2>
 
-                <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-sm">
+                <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 md:p-8 border border-gray-200/50 shadow-sm">
                   <p className="text-gray-600 text-center mb-8 text-lg">Technologies and tools I work with</p>
 
                   <div className="flex flex-wrap justify-start gap-3">
@@ -700,7 +696,7 @@ export default function Home() {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
-                      className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 hover:border-purple-300/50 transition-all duration-300 group shadow-sm hover:shadow-md"
+                      className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-200/50 hover:border-purple-300/50 transition-all duration-300 group shadow-sm hover:shadow-md"
                     >
                       <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-purple-500 transition-colors duration-200">
                         {project.title}
@@ -760,8 +756,8 @@ export default function Home() {
           <section id="contact" className="py-20 px-4">
             <div className="max-w-4xl mx-auto text-center mt-10">
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
@@ -804,7 +800,7 @@ export default function Home() {
                       transition={{ duration: 0.6, delay: index * 0.1 }}
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.05, y: -5 }}
-                      className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+                      className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-gray-200/50 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
                     >
                       <div
                         className={`w-12 h-12 bg-gradient-to-r ${contact.gradient} rounded-xl flex items-center justify-center mx-auto mb-4`}
@@ -833,7 +829,7 @@ export default function Home() {
             </div>
           </section>
           {/* Footer */}
-          <footer className="py-8 px-4 border-t border-gray-200">
+          <footer className="py-8 px-4">
             <div className="max-w-6xl mx-auto text-center">
               <p className="text-gray-500">❤️&nbsp;Portfolio UyenLun❤️</p>
             </div>
