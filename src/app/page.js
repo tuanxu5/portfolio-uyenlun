@@ -663,9 +663,9 @@ export default function Home() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: index * 0.05 }}
                         viewport={{ once: true }}
-                        whileHover={{ scale: 1.08, y: -2 }}
+                        // whileHover={{ scale: 1.08, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-6 py-3 bg-gradient-to-r from-purple-100 via-pink-100 to-blue-100 rounded-full text-sm font-medium text-purple-700 border border-purple-300 hover:shadow-lg transition-all duration-500 cursor-pointer"
+                        className="px-6 py-3 bg-gradient-to-r hover:from-purple-100 hover:via-pink-100 hover:to-blue-100 rounded-full text-sm font-medium hover:text-purple-700 border  border-gray-400 hover:border-purple-300 hover:shadow-lg transition-all duration-250 cursor-pointer"
                       >
                         {skill}
                       </motion.button>
@@ -680,10 +680,7 @@ export default function Home() {
             </div>
           </section>
           {/* Projects Section */}
-          <section
-            id="projects"
-            className="py-20 px-4 bg-gradient-to-r from-blue-50/30 via-green-50/30 via-yellow-50/30 to-orange-50/30"
-          >
+          <section id="projects" className="py-20 px-4">
             <div className="max-w-6xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -820,12 +817,12 @@ export default function Home() {
                       {contact.href ? (
                         <a
                           href={contact.href}
-                          className="text-cyan-500 hover:text-cyan-600 transition-colors duration-200 break-all"
+                          className="text-purple-500 hover:text-purple-600 transition-colors duration-200 break-all"
                         >
                           {contact.content}
                         </a>
                       ) : (
-                        <p className="text-cyan-500 hover:text-cyan-600 transition-colors duration-200 break-all">
+                        <p className="text-purple-500 hover:text-purple-600 transition-colors duration-200 break-all">
                           {contact.content}
                         </p>
                       )}
