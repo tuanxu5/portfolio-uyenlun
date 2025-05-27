@@ -208,90 +208,6 @@ export default function Home() {
   ];
 
   // Loading Screen Component
-  const LoadingScreen = () => (
-    <div className="fixed inset-0 z-[9999] bg-gradient-to-br from-pink-50 via-purple-50 via-blue-50 via-cyan-50 via-green-50 via-yellow-50 to-orange-50 flex items-center justify-center">
-      <div className="text-center">
-        {/* Logo Animation */}
-        <motion.div
-          initial={{ scale: 0.3, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="mb-8"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 via-blue-500 via-cyan-500 via-green-500 via-yellow-500 to-orange-500 bg-clip-text text-transparent">
-            UYEN PHAM
-          </h1>
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg text-gray-600 mt-3"
-          >
-            Backend Developer
-          </motion.p>
-        </motion.div>
-
-        {/* Loading Dots */}
-        <div className="flex items-center justify-center space-x-1 mb-8">
-          {[0, 1, 2, 3, 4].map((index) => (
-            <motion.div
-              key={index}
-              className="w-3 h-3 rounded-full"
-              style={{
-                backgroundColor:
-                  index === 0
-                    ? "#ec4899"
-                    : index === 1
-                    ? "#a855f7"
-                    : index === 2
-                    ? "#3b82f6"
-                    : index === 3
-                    ? "#06b6d4"
-                    : "#10b981",
-              }}
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.7, 1, 0.7],
-              }}
-              transition={{
-                duration: 1,
-                repeat: Infinity,
-                delay: index * 0.1,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Progress Bar */}
-        <div className="w-80 h-2 bg-gray-200/50 rounded-full mx-auto mb-6 overflow-hidden">
-          <div
-            className="h-full bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full transition-all duration-100"
-            style={{ width: `${loadingProgress}%` }}
-          />
-        </div>
-
-        {/* Progress Text */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="text-purple-600 font-medium text-lg mb-2"
-        >
-          {loadingProgress}%
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7 }}
-          className="text-gray-500 text-sm"
-        >
-          Loading amazing things...
-        </motion.p>
-      </div>
-    </div>
-  );
 
   return (
     <>
@@ -306,7 +222,16 @@ export default function Home() {
       </Head>
 
       {/* Show loading screen when loading */}
-      {isLoading && <LoadingScreen />}
+      {isLoading && (
+        <div className="fixed inset-0 z-[9999] bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 flex items-center justify-center">
+          <div className="w-80 h-2 bg-gray-200/50 rounded-full mx-auto mb-6 overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-purple-300 via-cyan-300 to-green-300 rounded-full transition-all duration-100"
+              style={{ width: `${loadingProgress}%` }}
+            />
+          </div>
+        </div>
+      )}
 
       {/* Main content - only show when not loading */}
       {!isLoading && (
@@ -314,27 +239,27 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 via-blue-50 via-cyan-50 via-green-50 via-yellow-50 to-orange-50"
+          className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50"
         >
           {/* Navigation */}
-          <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50 shadow-sm">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-between items-center py-5">
+          <nav className="fixed top-0 left-0 right-0 z-50 bg-white/50 backdrop-blur-md mb-4 overflow-hidden shadow-sm">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+              <div className="flex justify-between items-center py-4">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   className="text-2xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent"
                 >
-                  Uyen Pham
+                  UynLun
                 </motion.div>
 
                 <div className="hidden md:flex items-center space-x-8">
-                  <div className="flex space-x-8">
+                  <div className="flex space-x-10">
                     {["home", "about", "experience", "skills", "projects", "contact"].map((section) => (
                       <button
                         key={section}
                         onClick={() => scrollToSection(section)}
-                        className={`capitalize transition-colors duration-200 font-medium ${
+                        className={`capitalize transition-colors duration-200 font-medium cursor-pointer text-sm ${
                           activeSection === section ? "text-purple-600" : "text-gray-600 hover:text-gray-900"
                         }`}
                       >
@@ -344,11 +269,11 @@ export default function Home() {
                   </div>
 
                   <a
-                    href="/cv.pdf"
-                    download
-                    className="px-6 py-2.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white rounded-full text-sm font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105"
+                    href="https://cv.uyenlun.com/"
+                    target="_blank"
+                    className="px-5 py-3.5 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-purple-700 border border-purple-200 text-sm font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105"
                   >
-                    Download CV
+                    Curriculum Vitae
                   </a>
                 </div>
 
@@ -382,9 +307,9 @@ export default function Home() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200/50"
+                  className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200/50  rounded-xl"
                 >
-                  <div className="px-4 py-6 space-y-4">
+                  <div className="px-4 py-6 space-y-4 rounded-2xl">
                     {["home", "about", "experience", "skills", "projects", "contact"].map((section) => (
                       <button
                         key={section}
@@ -418,21 +343,42 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
                     onClick={() => scrollToSection("projects")}
-                    className="px-8 py-3 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full text-white font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105"
+                    className="px-8 py-3.5 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-purple-700 border border-purple-200 font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-101"
                   >
                     View My Work
                   </button>
                   <button
                     onClick={() => scrollToSection("contact")}
-                    className="px-8 py-3 bg-gradient-to-r from-white to-gray-50 border border-purple-200 rounded-full text-purple-600 font-medium hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 hover:border-purple-300 hover:shadow-lg transition-all duration-500 transform hover:-translate-y-1"
+                    className="px-8 py-3.5 bg-gradient-to-r from-white to-gray-50 border border-purple-200 rounded-full text-purple-600 font-medium hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 hover:border-purple-300 hover:shadow-lg transition-all duration-500 transform hover:-translate-y-1"
                   >
                     Get In Touch
                   </button>
                 </div>
               </motion.div>
             </div>
+            {/* Scroll Indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: isLoading ? 6 : 3 }}
+              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-400"
+            >
+              <div className="flex flex-col items-center">
+                <p className="text-sm mb-2 font-mono">Scroll down</p>
+                <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
+                  <motion.div
+                    animate={{ y: [0, 12, 0] }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="w-1 h-3 bg-gray-300 rounded-full mt-2"
+                  />
+                </div>
+              </div>
+            </motion.div>
           </section>
-
           {/* About Section */}
           <section id="about" className="py-20 px-4">
             <div className="max-w-6xl mx-auto">
@@ -447,115 +393,98 @@ export default function Home() {
                 </h2>
 
                 <div className="grid lg:grid-cols-3 gap-8 mb-12">
-                  <div className="lg:col-span-2">
+                  <div className="lg:col-span-3">
                     <h3 className="text-2xl font-semibold text-gray-800 mb-6">Personal Introduction</h3>
-                    <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 shadow-sm">
+                    <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-sm hover:shadow-lg transition-all duration-300">
                       <p className="text-gray-700 leading-relaxed mb-4">
-                        Hello! I'm Uyen, a passionate Backend Developer with a strong foundation in building scalable
-                        web applications and robust API systems. My journey in technology began during my studies at FPT
-                        Polytechnic College, where I discovered my love for server-side development and database
-                        architecture.
+                        Hello! I&apos;m Uyen, a passionate Backend Developer with a strong foundation in building
+                        scalable web applications and robust API systems. My journey in technology began during my
+                        studies at FPT Polytechnic College, where I discovered my love for server-side development and
+                        database architecture.
                       </p>
                       <p className="text-gray-700 leading-relaxed mb-4">
                         I specialize in Node.js ecosystem, particularly with NestJS and Express.js frameworks. My
                         experience spans across various domains including AI content platforms, e-commerce solutions, HR
-                        management systems, and microservices architecture. I'm always eager to learn new technologies
-                        and take on challenging projects.
+                        management systems, and microservices architecture. I&apos;m always eager to learn new
+                        technologies and take on challenging projects.
                       </p>
                       <p className="text-gray-700 leading-relaxed">
-                        When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects,
-                        and staying updated with the latest industry trends. I believe in writing clean, maintainable
-                        code and creating solutions that make a real impact.
+                        When I&apos;m not coding, I enjoy exploring new technologies, contributing to open-source
+                        projects, and staying updated with the latest industry trends. I believe in writing clean,
+                        maintainable code and creating solutions that make a real impact.
                       </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-semibold text-gray-800 mb-6">Quick Stats</h3>
-                    <div className="space-y-4">
-                      <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 shadow-sm">
-                        <div className="text-3xl font-bold text-purple-500 mb-1">1+</div>
-                        <div className="text-sm text-gray-600">Years Experience</div>
-                      </div>
-                      <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 shadow-sm">
-                        <div className="text-3xl font-bold text-pink-500 mb-1">10+</div>
-                        <div className="text-sm text-gray-600">Projects Completed</div>
-                      </div>
-                      <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 shadow-sm">
-                        <div className="text-3xl font-bold text-blue-500 mb-1">5+</div>
-                        <div className="text-sm text-gray-600">Technologies Mastered</div>
-                      </div>
-                      <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 shadow-sm">
-                        <div className="text-3xl font-bold text-cyan-500 mb-1">100%</div>
-                        <div className="text-sm text-gray-600">Client Satisfaction</div>
-                      </div>
                     </div>
                   </div>
                 </div>
-
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-2xl font-semibold text-gray-800 mb-6">Core Competencies</h3>
-                    <div className="space-y-4">
-                      <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 shadow-sm">
-                        <h4 className="text-lg font-medium text-purple-500 mb-2">Backend Development</h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          Expert in Node.js, NestJS, Express.js. Proficient in building RESTful APIs, GraphQL endpoints,
-                          and microservices architecture. Strong understanding of server-side optimization and
-                          performance tuning.
-                        </p>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    {
+                      title: "Backend Development",
+                      description:
+                        "Expert in Node.js, NestJS, Express.js. Building RESTful APIs, GraphQL endpoints, and microservices architecture.",
+                      icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+                      gradient: "from-purple-200 to-pink-200",
+                    },
+                    {
+                      title: "Database & Architecture",
+                      description:
+                        "Experienced with MongoDB, MySQL, Redis. Database design, optimization, and data modeling expertise.",
+                      icon: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4",
+                      gradient: "from-blue-300 to-cyan-300",
+                    },
+                    {
+                      title: "Integration & DevOps",
+                      description:
+                        "Payment gateway integration, third-party APIs, Docker containerization, and Git workflows.",
+                      icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
+                      gradient: "from-green-300 to-yellow-300",
+                    },
+                    {
+                      title: "Learning & Growth",
+                      description:
+                        "Continuously learning new technologies like cloud services (AWS, Google Cloud), advanced database concepts, and modern development practices. Currently exploring AI/ML integration in backend systems.",
+                      icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
+                      gradient: "from-green-500 to-yellow-500",
+                    },
+                    {
+                      title: "Career Aspirations",
+                      description:
+                        "Aiming to become a Senior Backend Engineer, contributing to large-scale systems and mentoring junior developers. Interested in system architecture, performance optimization, and leading technical teams.",
+                      icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
+                      gradient: "from-green-500 to-yellow-500",
+                    },
+                    {
+                      title: "Values & Approach",
+                      description:
+                        "Believes in clean code, thorough testing, and comprehensive documentation. Values collaboration, continuous improvement, and building solutions that solve real-world problems effectively.",
+                      icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
+                      gradient: "from-green-500 to-yellow-500",
+                    },
+                  ].map((competency, index) => (
+                    <motion.div
+                      key={competency.title}
+                      initial={{ opacity: 0, y: 50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.2 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.05, y: -10 }}
+                      className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+                    >
+                      <div
+                        className={`w-12 h-12 bg-gradient-to-r ${competency.gradient} rounded-xl flex items-center justify-center mb-4`}
+                      >
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={competency.icon} />
+                        </svg>
                       </div>
-                      <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 shadow-sm">
-                        <h4 className="text-lg font-medium text-cyan-500 mb-2">Database & Architecture</h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          Experienced with MongoDB, MySQL, Redis. Skilled in database design, optimization, and data
-                          modeling. Knowledge of caching strategies and real-time data synchronization.
-                        </p>
-                      </div>
-                      <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 shadow-sm">
-                        <h4 className="text-lg font-medium text-pink-500 mb-2">Integration & DevOps</h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          Payment gateway integration (Stripe, Cryptomus), third-party API integration, Docker
-                          containerization, and collaborative development with Git/GitHub workflows.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-semibold text-gray-800 mb-6">Interests & Goals</h3>
-                    <div className="space-y-4">
-                      <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 shadow-sm">
-                        <h4 className="text-lg font-medium text-green-500 mb-2">Learning & Growth</h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          Continuously learning new technologies like cloud services (AWS, Google Cloud), advanced
-                          database concepts, and modern development practices. Currently exploring AI/ML integration in
-                          backend systems.
-                        </p>
-                      </div>
-                      <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 shadow-sm">
-                        <h4 className="text-lg font-medium text-yellow-500 mb-2">Career Aspirations</h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          Aiming to become a Senior Backend Engineer, contributing to large-scale systems and mentoring
-                          junior developers. Interested in system architecture, performance optimization, and leading
-                          technical teams.
-                        </p>
-                      </div>
-                      <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 shadow-sm">
-                        <h4 className="text-lg font-medium text-orange-500 mb-2">Values & Approach</h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          Believes in clean code, thorough testing, and comprehensive documentation. Values
-                          collaboration, continuous improvement, and building solutions that solve real-world problems
-                          effectively.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                      <h4 className="text-lg font-semibold text-gray-800 mb-3">{competency.title}</h4>
+                      <p className="text-gray-600 text-sm leading-relaxed">{competency.description}</p>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
             </div>
           </section>
-
           {/* Experience Section */}
           <section
             id="experience"
@@ -585,7 +514,7 @@ export default function Home() {
                         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
                           <div>
                             <h4 className="text-xl font-semibold text-gray-800 mb-2">Backend Developer (Fresher)</h4>
-                            <h5 className="text-lg text-pink-500 mb-2">MST Entertainment</h5>
+                            <h5 className="text-lg text-purple-500 mb-2">MST Entertainment</h5>
                             <p className="text-gray-600 text-sm mb-4">Hanoi, Vietnam</p>
                           </div>
                           <div className="text-purple-600 font-medium bg-purple-50 px-3 py-1 rounded-full text-sm">
@@ -631,7 +560,7 @@ export default function Home() {
                           ].map((tech) => (
                             <span
                               key={tech}
-                              className="px-2 py-1 bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 rounded text-xs text-purple-700 border border-purple-200"
+                              className="px-2 py-1 bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 rounded-lg text-xs text-purple-700 border border-purple-200"
                             >
                               {tech}
                             </span>
@@ -653,7 +582,7 @@ export default function Home() {
                         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
                           <div>
                             <h4 className="text-xl font-semibold text-gray-800 mb-2">
-                              Bachelor's in Information Technology
+                              Bachelor&apos;s in Information Technology
                             </h4>
                             <h5 className="text-lg text-blue-500 mb-2">FPT Polytechnic College</h5>
                             <p className="text-gray-600 text-sm mb-4">Hanoi, Vietnam</p>
@@ -697,7 +626,7 @@ export default function Home() {
                           ].map((subject) => (
                             <span
                               key={subject}
-                              className="px-2 py-1 bg-gradient-to-r from-blue-100 via-cyan-100 to-green-100 rounded text-xs text-blue-700 border border-blue-200"
+                              className="px-2 py-1 bg-gradient-to-r from-blue-100 via-cyan-100 to-green-100 rounded-lg text-xs text-blue-700 border border-blue-200"
                             >
                               {subject}
                             </span>
@@ -706,49 +635,10 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Certifications & Achievements */}
-                  <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-sm">
-                    <div className="flex items-center mb-6">
-                      <div className="w-3 h-3 bg-gradient-to-r from-green-400 via-yellow-400 to-orange-400 rounded-full mr-4"></div>
-                      <h3 className="text-2xl font-semibold text-gray-800">Certifications & Achievements</h3>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="text-lg font-medium text-green-500 mb-3">Professional Certifications</h4>
-                        <div className="space-y-2">
-                          <div className="flex items-center space-x-2">
-                            <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
-                            <span className="text-gray-700 text-sm">MongoDB Certified Developer (in progress)</span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
-                            <span className="text-gray-700 text-sm">Node.js Application Development (completed)</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <h4 className="text-lg font-medium text-yellow-500 mb-3">Academic Achievements</h4>
-                        <div className="space-y-2">
-                          <div className="flex items-center space-x-2">
-                            <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></div>
-                            <span className="text-gray-700 text-sm">Dean's List - Fall 2024</span>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full"></div>
-                            <span className="text-gray-700 text-sm">Best Capstone Project Award</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             </div>
           </section>
-
           {/* Skills Section */}
           <section id="skills" className="py-20 px-4">
             <div className="max-w-6xl mx-auto">
@@ -765,7 +655,7 @@ export default function Home() {
                 <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 border border-gray-200/50 shadow-sm">
                   <p className="text-gray-600 text-center mb-8 text-lg">Technologies and tools I work with</p>
 
-                  <div className="flex flex-wrap justify-center gap-3">
+                  <div className="flex flex-wrap justify-start gap-3">
                     {allSkills.map((skill, index) => (
                       <motion.button
                         key={skill}
@@ -775,7 +665,7 @@ export default function Home() {
                         viewport={{ once: true }}
                         whileHover={{ scale: 1.08, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-5 py-2.5 bg-gradient-to-r from-white to-gray-50 hover:from-purple-100 hover:via-pink-100 hover:to-blue-100 rounded-full text-sm font-medium text-gray-700 hover:text-purple-700 border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all duration-500 cursor-pointer"
+                        className="px-6 py-3 bg-gradient-to-r from-purple-100 via-pink-100 to-blue-100 rounded-full text-sm font-medium text-purple-700 border border-purple-300 hover:shadow-lg transition-all duration-500 cursor-pointer"
                       >
                         {skill}
                       </motion.button>
@@ -789,7 +679,6 @@ export default function Home() {
               </motion.div>
             </div>
           </section>
-
           {/* Projects Section */}
           <section
             id="projects"
@@ -824,23 +713,24 @@ export default function Home() {
                         <span>Team Size: {project.teamSize}</span>
                       </div>
 
-                      <p className="text-gray-600 mb-4 leading-relaxed">{project.description}</p>
+                      <p className="text-gray-600 mb-4 text-sm leading-relaxed">{project.description}</p>
 
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      {/* <div className="flex flex-wrap gap-2 mb-4">
                         {project.techStack.map((tech) => (
                           <span
                             key={tech}
-                            className="px-2 py-1 bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 rounded text-xs text-purple-700 border border-purple-200"
+                            // className="px-2 py-1 bg-gradient-to-r from-blue-100 via-cyan-100 to-green-100 rounded-lg text-xs text-blue-700 border border-blue-200"
+                            className="px-2 py-1 bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 rounded-lg text-xs text-purple-700 border border-purple-200"
                           >
                             {tech}
                           </span>
                         ))}
-                      </div>
+                      </div> */}
 
                       <div className="flex flex-col sm:flex-row gap-3">
                         <button
                           onClick={() => setSelectedProject(project)}
-                          className="px-6 py-3 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white rounded-xl text-sm font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105"
+                          className="px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 border border-purple-200 rounded-xl text-sm font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105"
                         >
                           View Details
                         </button>
@@ -870,112 +760,87 @@ export default function Home() {
               </motion.div>
             </div>
           </section>
-
-          {/* Contact Section */}
           <section id="contact" className="py-20 px-4">
             <div className="max-w-4xl mx-auto text-center">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-orange-500 via-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-                  Let's Work Together
+                <h2 className="text-3xl md:text-4xl font-bold mb-8 bg-gradient-to-r from-orange-500 via-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+                  Let&apos;s Work Together
                 </h2>
-                <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-                  I'm always interested in new opportunities and challenging projects. Let's discuss how we can bring
-                  your ideas to life.
+                <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto px-4">
+                  I&apos;m always interested in new opportunities and challenging projects. Let&apos;s discuss how we
+                  can bring your ideas to life.
                 </p>
 
-                <div className="grid md:grid-cols-3 gap-8 mb-12">
-                  <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 shadow-sm">
-                    <div className="w-12 h-12 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-gray-800 font-semibold mb-2">Email</h3>
-                    <a
-                      href="mailto:thiuyen1132004@gmail.com"
-                      className="text-purple-500 hover:text-purple-600 transition-colors duration-200"
+                <div className="grid md:grid-cols-3 gap-6 mb-12">
+                  {[
+                    {
+                      icon: "M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+                      title: "Email",
+                      content: "thiuyen1132004@gmail.com",
+                      href: "mailto:thiuyen1132004@gmail.com",
+                      gradient: "from-purple-300 to-pink-300",
+                    },
+                    {
+                      icon: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z",
+                      title: "Phone",
+                      content: "+84 346 795 326",
+                      href: "tel:+84346795326",
+                      gradient: "from-blue-300 to-cyan-300",
+                    },
+                    {
+                      icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
+                      title: "Location",
+                      content: "My Dinh, Nam Tu Liem\nHanoi, Vietnam",
+                      href: null,
+                      gradient: "from-green-300 to-yellow-300",
+                    },
+                  ].map((contact, index) => (
+                    <motion.div
+                      key={contact.title}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 shadow-sm hover:shadow-xl transition-all duration-300"
                     >
-                      thiuyen1132004@gmail.com
-                    </a>
-                  </div>
-
-                  <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 shadow-sm">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 via-cyan-500 to-green-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-gray-800 font-semibold mb-2">Phone</h3>
-                    <a
-                      href="tel:+84346795326"
-                      className="text-cyan-500 hover:text-cyan-600 transition-colors duration-200"
-                    >
-                      +84 346 795 326
-                    </a>
-                  </div>
-
-                  <div className="bg-white/70 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 shadow-sm">
-                    <div className="w-12 h-12 bg-gradient-to-r from-green-500 via-yellow-500 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="text-gray-800 font-semibold mb-2">Location</h3>
-                    <p className="text-gray-600">
-                      My Dinh, Nam Tu Liem
-                      <br />
-                      Hanoi, Vietnam
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex justify-center">
-                  <a
-                    href="https://uyenlun.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-10 py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full text-white font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105"
-                  >
-                    Visit My Portfolio
-                  </a>
+                      <div
+                        className={`w-12 h-12 bg-gradient-to-r ${contact.gradient} rounded-xl flex items-center justify-center mx-auto mb-4`}
+                      >
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={contact.icon} />
+                        </svg>
+                      </div>
+                      <h3 className="text-gray-800 font-semibold mb-2">{contact.title}</h3>
+                      {contact.href ? (
+                        <a
+                          href={contact.href}
+                          className="text-cyan-500 hover:text-cyan-600 transition-colors duration-200 break-all"
+                        >
+                          {contact.content}
+                        </a>
+                      ) : (
+                        <p className="text-cyan-500 hover:text-cyan-600 transition-colors duration-200 break-all">
+                          {contact.content}
+                        </p>
+                      )}
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
             </div>
           </section>
-
           {/* Footer */}
           <footer className="py-8 px-4 border-t border-gray-200">
             <div className="max-w-6xl mx-auto text-center">
-              <p className="text-gray-500">© 2025 Pham Thi Uyen. Built with Next.js and ❤️</p>
+              <p className="text-gray-500">❤️&nbsp;Portfolio UyenLun❤️</p>
             </div>
           </footer>
-
           {/* Project Detail Modal */}
           {selectedProject && (
             <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -1004,7 +869,10 @@ export default function Home() {
                         )}
                       </div>
                     </div>
-                    <button onClick={() => setSelectedProject(null)} className="text-gray-400 hover:text-gray-600 p-2">
+                    <button
+                      onClick={() => setSelectedProject(null)}
+                      className="text-gray-400 hover:text-gray-600 p-2 cursor-pointer"
+                    >
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                       </svg>
@@ -1018,7 +886,7 @@ export default function Home() {
                       {selectedProject.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-sm text-purple-700 border border-purple-200"
+                          className="px-3 py-1 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg text-sm text-purple-700 border border-purple-200"
                         >
                           {tech}
                         </span>
@@ -1045,7 +913,7 @@ export default function Home() {
                       <ul className="space-y-2">
                         {selectedProject.features.map((feature, index) => (
                           <li key={index} className="flex items-start space-x-2">
-                            <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <div className="w-1.5 h-1.5 bg-pink-500 rounded-full mt-2 flex-shrink-0"></div>
                             <span className="text-gray-700 text-sm">{feature}</span>
                           </li>
                         ))}
@@ -1072,14 +940,14 @@ export default function Home() {
                         href={selectedProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white rounded-xl font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105 text-center"
+                        className="px-6 py-3 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-700 border border-purple-200 rounded-xl font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105 text-center"
                       >
                         View Live Project
                       </a>
                     )}
                     <button
                       onClick={() => setSelectedProject(null)}
-                      className="px-8 py-4 bg-gradient-to-r from-white to-gray-50 border border-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 hover:border-gray-300 hover:shadow-lg transition-all duration-500 text-center"
+                      className="px-6 py-3 bg-gradient-to-r from-white to-gray-50 cursor-pointer border border-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 hover:border-gray-300 hover:shadow-lg transition-all duration-500 text-center"
                     >
                       Close
                     </button>
