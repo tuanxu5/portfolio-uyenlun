@@ -25,5 +25,6 @@
     "eslint-config-next": "15.3.2",
     "postcss": "^8.4.31",
     "tailwindcss": "^4"
-  }
+  },
+  "packageManager": "yarn@4.7.0"
 }

@@ -227,7 +227,7 @@ export default function Home() {
                 <a
                   href="/cv.pdf"
                   download
-                  className="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full text-sm font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="px-6 py-2.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white rounded-full text-sm font-medium hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105"
                 >
                   Download CV
                 </a>
@@ -294,13 +294,13 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
                   onClick={() => scrollToSection("projects")}
-                  className="px-8 py-3 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:-translate-y-1"
+                  className="px-8 py-3 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full text-white font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105"
                 >
                   View My Work
                 </button>
                 <button
                   onClick={() => scrollToSection("contact")}
-                  className="px-8 py-3 border border-gray-300 rounded-full text-gray-700 hover:bg-gray-50 transition-all duration-300"
+                  className="px-8 py-3 bg-gradient-to-r from-white to-gray-50 border border-purple-200 rounded-full text-purple-600 font-medium hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 hover:border-purple-300 hover:shadow-lg transition-all duration-500 transform hover:-translate-y-1"
                 >
                   Get In Touch
                 </button>
@@ -719,7 +719,7 @@ export default function Home() {
                     <div className="flex flex-col sm:flex-row gap-3">
                       <button
                         onClick={() => setSelectedProject(project)}
-                        className="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg text-sm font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:-translate-y-0.5"
+                        className="px-6 py-3 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white rounded-xl text-sm font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105"
                       >
                         View Details
                       </button>
@@ -729,7 +729,7 @@ export default function Home() {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center space-x-2 px-4 py-2 border border-purple-300 text-purple-600 rounded-lg text-sm font-medium hover:bg-purple-50 transition-all duration-300"
+                          className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-white to-gray-50 border border-purple-200 text-purple-600 rounded-xl text-sm font-medium hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 hover:border-purple-300 hover:shadow-lg transition-all duration-500 transform hover:-translate-y-1"
                         >
                           <span>Live Demo</span>
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -839,7 +839,7 @@ export default function Home() {
                   href="https://uyenlun.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-3 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 rounded-full text-white font-medium hover:shadow-lg hover:shadow-pink-500/25 transition-all duration-300 transform hover:-translate-y-1"
+                  className="px-10 py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 rounded-full text-white font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-2 hover:scale-105"
                 >
                   Visit My Portfolio
                 </a>
@@ -951,14 +951,14 @@ export default function Home() {
                       href={selectedProject.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:-translate-y-0.5 text-center"
+                      className="px-8 py-4 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white rounded-xl font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105 text-center"
                     >
                       View Live Project
                     </a>
                   )}
                   <button
                     onClick={() => setSelectedProject(null)}
-                    className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-all duration-300 text-center"
+                    className="px-8 py-4 bg-gradient-to-r from-white to-gray-50 border border-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gradient-to-r hover:from-gray-50 hover:to-gray-100 hover:border-gray-300 hover:shadow-lg transition-all duration-500 text-center"
                   >
                     Close
                   </button>
