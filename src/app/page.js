@@ -90,24 +90,78 @@ export default function Home() {
   };
 
   const allSkills = [
-    "JavaScript",
-    "PHP",
-    "HTML5",
-    "CSS3",
-    "NestJS",
-    "Express.js",
-    "Laravel",
-    "NextJS",
-    "MySQL",
-    "MongoDB",
-    "Redis",
-    "Git",
-    "GitHub",
-    "Docker",
-    "Socket.IO",
-    "GraphQL",
-    "Figma",
-    "Postman",
+    {
+      name: "JavaScript",
+      icon: "/icons/js.png",
+    },
+    {
+      name: "PHP",
+      icon: "/icons/php.png",
+    },
+    {
+      name: "HTML5",
+      icon: "/icons/html5.png",
+    },
+    {
+      name: "CSS3",
+      icon: "/icons/css3.svg",
+    },
+    {
+      name: "NestJS",
+      icon: "/icons/nestjs.png",
+    },
+    {
+      name: "Express.js",
+      icon: "/icons/expressjs.png",
+    },
+    {
+      name: "Laravel",
+      icon: "/icons/laravel.png",
+    },
+    {
+      name: "NextJS",
+      icon: "/icons/nextjs.png",
+    },
+    {
+      name: "MySQL",
+      icon: "/icons/mysql.png",
+    },
+    {
+      name: "MongoDB",
+      icon: "/icons/mongodb.png",
+    },
+    {
+      name: "Redis",
+      icon: "/icons/redis.png",
+    },
+    {
+      name: "Git",
+      icon: "/icons/git.png",
+    },
+    {
+      name: "GitHub",
+      icon: "/icons/github.png",
+    },
+    {
+      name: "Docker",
+      icon: "/icons/docker.png",
+    },
+    {
+      name: "Socket.IO",
+      icon: "/icons/developer_466318.png",
+    },
+    {
+      name: "GraphQL",
+      icon: "/icons/graphql.png",
+    },
+    {
+      name: "Figma",
+      icon: "/icons/figma.png",
+    },
+    {
+      name: "Postman",
+      icon: "/icons/postman.png",
+    },
   ];
 
   const projects = [
@@ -344,40 +398,156 @@ export default function Home() {
           </nav>
 
           {/* Hero Section */}
-          <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-20">
-            <div className="max-w-4xl mx-auto text-center">
-              <motion.div {...fadeInUp} transition={{ duration: 0.8 }}>
-                <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
-                  PHAM THI UYEN
-                </h1>
-                <h2 className="text-2xl md:text-3xl text-gray-700 mb-8 font-light">Backend Developer</h2>
-                <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-                  Passionate about building scalable backend systems and RESTful APIs. Experienced in Node.js, NestJS,
-                  and microservices architecture.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button
-                    onClick={() => scrollToSection("projects")}
-                    className="px-8 py-3.5 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-purple-700 border border-purple-200 font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-101"
-                  >
-                    View My Work
-                  </button>
-                  <button
-                    onClick={() => scrollToSection("contact")}
-                    className="px-8 py-3.5 bg-gradient-to-r from-white to-gray-50 border border-purple-200 rounded-full text-purple-600 font-medium hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 hover:border-purple-300 hover:shadow-lg transition-all duration-500 transform hover:-translate-y-1"
-                  >
-                    Get In Touch
-                  </button>
-                </div>
-              </motion.div>
+          <section
+            id="home"
+            className="min-h-screen flex items-center justify-center px-4 pt-20 pb-20 relative overflow-hidden"
+          >
+            {/* Background decorative elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-200 to-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+              <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-cyan-200 to-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse delay-1000"></div>
+              <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-r from-pink-200 to-cyan-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-500"></div>
             </div>
+
+            <div className="max-w-7xl mx-auto relative z-10">
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                {/* Profile Photo Section - Bên trái */}
+                <motion.div
+                  initial={{ opacity: 0, x: -100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="lg:col-span-5 flex justify-center lg:justify-start order-2 lg:order-1"
+                >
+                  <div className="relative">
+                    {/* Main photo */}
+                    <div className="relative w-72 h-80 md:w-80 md:h-96 lg:w-72 lg:h-80 xl:w-80 xl:h-96">
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-400 via-pink-400 to-cyan-400 rounded-3xl transform rotate-3 opacity-20"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-pink-400 via-purple-400 to-cyan-400 rounded-3xl transform -rotate-2 opacity-15"></div>
+
+                      <motion.div
+                        whileHover={{ scale: 1.02, rotate: 1 }}
+                        transition={{ duration: 0.3 }}
+                        className="relative bg-white p-3 rounded-3xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-300"
+                      >
+                        <img
+                          src="/image/z6646656176921_ef4c8361be77016aa8fc14e2d9c7a670.jpg"
+                          alt="Pham Thi Uyen"
+                          className="w-full h-full object-cover rounded-2xl"
+                        />
+
+                        {/* Code snippets floating around */}
+                        <motion.div
+                          animate={{ y: [-10, 10, -10] }}
+                          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                          className="absolute -top-4 -left-4 bg-gray-900 text-green-400 px-3 py-2 rounded-lg text-xs font-mono shadow-lg transform -rotate-12"
+                        >
+                          const dev = "awesome";
+                        </motion.div>
+
+                        <motion.div
+                          animate={{ y: [10, -10, 10] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                          className="absolute top-6 -right-6 bg-blue-600 text-white px-3 py-2 rounded-lg text-xs font-mono shadow-lg transform rotate-12"
+                        >
+                          {`{ api: 'ready' }`}
+                        </motion.div>
+
+                        {/* Floating badge */}
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 1.2, type: "spring", stiffness: 200 }}
+                          className="absolute -bottom-3 -right-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-1.5 rounded-full text-xs font-medium shadow-lg"
+                        >
+                          💻 Backend Dev
+                        </motion.div>
+                      </motion.div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Content Section - Bên phải */}
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="lg:col-span-7 text-center lg:text-left order-1 lg:order-2"
+                >
+                  {/* Greeting */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="mb-4"
+                  >
+                    <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-purple-700 text-sm font-medium">
+                      👋 Hello, I'm
+                    </span>
+                  </motion.div>
+
+                  {/* Name */}
+                  <motion.h1
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, duration: 0.8 }}
+                    className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent leading-tight"
+                  >
+                    PHAM THI UYEN
+                    <br />
+                  </motion.h1>
+
+                  {/* Role with dynamic text */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1, duration: 0.6 }}
+                    className="mb-6"
+                  >
+                    <h2 className="text-xl md:text-2xl lg:text-3xl text-gray-700 font-light mb-3">Backend Developer</h2>
+                  </motion.div>
+
+                  {/* Description */}
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.4, duration: 0.6 }}
+                    className="text-lg text-gray-600 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+                  >
+                    Passionate about building scalable backend systems and RESTful APIs. Experienced in Node.js, NestJS,
+                    and microservices architecture.
+                  </motion.p>
+
+                  {/* Action buttons */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.6, duration: 0.6 }}
+                    className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-6"
+                  >
+                    <motion.button
+                      onClick={() => scrollToSection("projects")}
+                      className="px-8 py-3.5 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-purple-700 border border-purple-200 font-medium hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-500 transform hover:-translate-y-1 hover:scale-101"
+                    >
+                      <span>View My Work</span>
+                    </motion.button>
+
+                    <motion.button
+                      onClick={() => scrollToSection("contact")}
+                      className="px-8 py-3.5 bg-gradient-to-r from-white to-gray-50 border border-purple-200 rounded-full text-purple-600 font-medium hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 hover:border-purple-300 hover:shadow-lg transition-all duration-500 transform hover:-translate-y-1"
+                    >
+                      Get In Touch
+                    </motion.button>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </div>
+
             {/* Scroll Indicator */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: isLoading ? 6 : 3 }}
-              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-400"
+              className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-gray-400"
             >
               <div className="flex flex-col items-center">
                 <p className="text-sm mb-2 font-mono">Scroll down</p>
@@ -389,7 +559,7 @@ export default function Home() {
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
-                    className="w-1 h-3 bg-gray-300 rounded-full mt-2"
+                    className="w-1 h-3 bg-gradient-to-b from-purple-400 to-pink-400 rounded-full mt-2"
                   />
                 </div>
               </div>
@@ -700,13 +870,22 @@ export default function Home() {
                   >
                     {allSkills.map((skill, index) => (
                       <motion.button
-                        key={skill}
+                        key={skill.name}
                         variants={fadeInScale}
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-6 py-3.5 bg-gradient-to-r hover:from-purple-100 hover:via-pink-100 hover:to-blue-100 rounded-full text-sm font-medium hover:text-purple-700 border  border-gray-400 hover:border-purple-300 hover:shadow-lg transition-all duration-250 cursor-pointer"
+                        className="px-6 py-3.5 bg-gradient-to-r hover:from-purple-100 hover:via-pink-100 hover:to-blue-100 rounded-full text-sm font-medium hover:text-purple-700 border border-gray-400 hover:border-purple-300 hover:shadow-lg transition-all duration-250 cursor-pointer flex items-center gap-2"
                       >
-                        {skill}
+                        <img
+                          src={skill.icon}
+                          alt={skill.name}
+                          className="w-5 h-5 object-contain"
+                          onError={(e) => {
+                            // Fallback nếu icon không load được
+                            e.target.style.display = "none";
+                          }}
+                        />
+                        <span>{skill.name}</span>
                       </motion.button>
                     ))}
                   </motion.div>
