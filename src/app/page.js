@@ -410,7 +410,7 @@ export default function Home() {
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <div className="grid lg:grid-cols-12 gap-8 lg:gap-20 items-center">
                 {/* Profile Photo Section - Bên trái */}
                 <motion.div
                   initial={{ opacity: 0, x: -100 }}
@@ -419,8 +419,8 @@ export default function Home() {
                   className="lg:col-span-5 flex justify-center lg:justify-start order-2 lg:order-1"
                 >
                   <div className="relative">
-                    {/* Main photo */}
-                    <div className="relative w-72 h-80 md:w-80 md:h-96 lg:w-72 lg:h-80 xl:w-80 xl:h-96">
+                    {/* Main photo - Tăng kích thước */}
+                    <div className="relative w-80 h-96 md:w-[26rem] md:h-[32rem] lg:w-96 lg:h-[28rem] xl:w-[26rem] xl:h-[34rem] 2xl:w-[30rem] 2xl:h-[38rem]">
                       <div className="absolute inset-0 bg-gradient-to-br from-purple-400 via-pink-400 to-cyan-400 rounded-3xl transform rotate-3 opacity-20"></div>
                       <div className="absolute inset-0 bg-gradient-to-br from-pink-400 via-purple-400 to-cyan-400 rounded-3xl transform -rotate-2 opacity-15"></div>
 
@@ -430,7 +430,7 @@ export default function Home() {
                         className="relative bg-white p-3 rounded-3xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-300"
                       >
                         <img
-                          src="/image/z6646656176921_ef4c8361be77016aa8fc14e2d9c7a670.jpg"
+                          src="/image/avatar.jpeg"
                           alt="Pham Thi Uyen"
                           className="w-full h-full object-cover rounded-2xl"
                         />
@@ -445,7 +445,7 @@ export default function Home() {
                         </motion.div>
 
                         <motion.div
-                          animate={{ y: [10, -10, 10] }}
+                          animate={{ y: [6, -10, 10] }}
                           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                           className="absolute top-6 -right-6 bg-blue-600 text-white px-3 py-2 rounded-lg text-xs font-mono shadow-lg transform rotate-12"
                         >
@@ -478,7 +478,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
-                    className="mb-4"
+                    className="mb-4 mt-10"
                   >
                     <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-purple-700 text-sm font-medium">
                       👋 Hello, I'm
@@ -547,7 +547,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: isLoading ? 6 : 3 }}
-              className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-gray-400"
+              className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-gray-400 hidden md:block"
             >
               <div className="flex flex-col items-center">
                 <p className="text-sm mb-2 font-mono">Scroll down</p>
