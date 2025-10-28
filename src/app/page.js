@@ -321,9 +321,8 @@ export default function Home() {
                       <button
                         key={section}
                         onClick={() => scrollToSection(section)}
-                        className={`capitalize transition-colors duration-200 font-medium cursor-pointer text-sm ${
-                          activeSection === section ? "text-purple-600" : "text-gray-600 hover:text-gray-900"
-                        }`}
+                        className={`capitalize transition-colors duration-200 font-medium cursor-pointer text-sm ${activeSection === section ? "text-purple-600" : "text-gray-600 hover:text-gray-900"
+                          }`}
                       >
                         {section}
                       </button>
@@ -376,9 +375,8 @@ export default function Home() {
                       <button
                         key={section}
                         onClick={() => scrollToSection(section)}
-                        className={`block w-full text-left capitalize transition-colors duration-200 font-medium py-2 text-sm ${
-                          activeSection === section ? "text-purple-600" : "text-gray-600 hover:text-gray-900"
-                        }`}
+                        className={`block w-full text-left capitalize transition-colors duration-200 font-medium py-2 text-sm ${activeSection === section ? "text-purple-600" : "text-gray-600 hover:text-gray-900"
+                          }`}
                       >
                         {section}
                       </button>
@@ -430,7 +428,7 @@ export default function Home() {
                         className="relative bg-white p-3 rounded-3xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-300"
                       >
                         <img
-                          src="/image/avatar.jpeg"
+                          src="/image/avt.jpg"
                           alt="Pham Thi Uyen"
                           className="w-full h-full object-cover rounded-2xl"
                         />
@@ -713,12 +711,60 @@ export default function Home() {
                       <div className="mb-8">
                         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
                           <div>
+                            <h4 className="text-xl font-semibold text-gray-800 mb-2">Full Stack Developer (Fresher)</h4>
+                            <h5 className="text-lg text-purple-500 mb-2 italic">GENTECH MEDIA AND TECHNOLOGY JOINT STOCK COMPANY</h5>
+                          </div>
+                          <div className="text-purple-600 font-medium bg-purple-50 px-3 py-1 rounded-full text-sm">
+                            June 2025 - Present
+                          </div>
+                        </div>
+
+                        <motion.div
+                          variants={staggerContainer}
+                          whileInView="animate"
+                          viewport={{ once: false, amount: 0.3 }}
+                          className="grid gap-3 mb-4"
+                        >
+                          {[
+                            "Developed accounting software system capable of handling full software development lifecycle.",
+                            "Built robust RESTful APIs using NestJS framework with MS SQL Server database for accounting operations.",
+                            "Implemented responsive frontend interfaces using React for enhanced user experience and data visualization.",
+                            "Developed core accounting modules including document management, accounts payable/receivable tracking, opening balance entry, inventory management, and financial reporting.",
+                            "Designed and created interactive dashboards and financial reports using Power BI for revenue tracking, expense analysis, and business intelligence insights.",
+                            "Optimized database queries and stored procedures in MS SQL Server for improved performance and data integrity.",
+                          ].map((item, index) => (
+                            <motion.div key={index} variants={fadeInUp} className="flex items-start space-x-3">
+                              <div className="w-1.5 h-1.5 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                              <p className="text-gray-700 text-sm">{item}</p>
+                            </motion.div>
+                          ))}
+                        </motion.div>
+
+                        <div className="flex flex-wrap gap-2">
+                          {[
+                            "NestJS",
+                            "React",
+                            "MS SQL Server",
+                            "Power BI",
+                          ].map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-2 py-1 bg-gradient-to-r from-pink-100 via-purple-100 to-blue-100 rounded-lg text-xs text-purple-700 border border-purple-200"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="mb-8">
+                        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
+                          <div>
                             <h4 className="text-xl font-semibold text-gray-800 mb-2">Backend Developer (Fresher)</h4>
                             <h5 className="text-lg text-purple-500 mb-2">MST Entertainment</h5>
                             <p className="text-gray-600 text-sm mb-4">Hanoi, Vietnam</p>
                           </div>
                           <div className="text-purple-600 font-medium bg-purple-50 px-3 py-1 rounded-full text-sm">
-                            April 2024 - Present
+                            April 2024 - May 2025
                           </div>
                         </div>
 
@@ -881,7 +927,6 @@ export default function Home() {
                           alt={skill.name}
                           className="w-5 h-5 object-contain"
                           onError={(e) => {
-                            // Fallback nếu icon không load được
                             e.target.style.display = "none";
                           }}
                         />
