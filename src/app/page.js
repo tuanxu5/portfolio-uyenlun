@@ -38,7 +38,7 @@ export default function Home() {
   useEffect(() => {
     if (!isLoading) {
       const handleScroll = () => {
-        const sections = ["home", "about", "experience", "skills", "projects", "contact"];
+        const sections = ["home", "about", "experience", "skills", "projects", "freelance", "contact"];
         const scrollPosition = window.scrollY + 100;
 
         for (const section of sections) {
@@ -269,6 +269,63 @@ export default function Home() {
       myRole:
         "Backend Architect - Designed the microservices architecture, implemented message queuing systems, and optimized data processing pipelines.",
     },
+    {
+      title: "Accounting Software",
+      description:
+        "Developed comprehensive accounting software system with full-stack implementation covering frontend and backend operations.",
+      techStack: ["NestJS", "MS SQL Server", "React", "Power BI"],
+      teamSize: 4,
+      link: null,
+      detailDescription:
+        "A comprehensive accounting software system designed to handle complete financial operations for businesses. The system provides robust financial management, reporting, and business intelligence capabilities with real-time data processing.",
+      features: [
+        "Document management for accounting records",
+        "Accounts payable and receivable tracking",
+        "Opening balance entry and management",
+        "Inventory control and management",
+        "Financial reporting and analytics",
+        "Interactive Power BI dashboards",
+        "Balance sheets and income statements",
+        "Custom business intelligence reports",
+      ],
+      challenges: [
+        "Complex accounting operations modeling",
+        "Optimizing MS SQL Server performance",
+        "Real-time financial data processing",
+        "Ensuring data integrity for transactions",
+      ],
+      myRole:
+        "Full-stack Developer - Built RESTful APIs for accounting modules, designed database schema with stored procedures, and created Power BI dashboards for financial analytics.",
+    },
+    {
+      title: "Document Management System",
+      description:
+        "Developed enterprise document management system with OCR capabilities, real-time collaboration, and comprehensive workflow management.",
+      techStack: ["NestJS", "MS SQL Server", "React", "TypeScript", "Socket.IO", "Tesseract.js"],
+      teamSize: 1,
+      link: null,
+      detailDescription:
+        "An enterprise-grade document management system that provides comprehensive document lifecycle management with advanced OCR capabilities, real-time collaboration features, and robust workflow approval systems.",
+      features: [
+        "Document upload and versioning control",
+        "Folder management with hierarchical structure",
+        "OCR text extraction from PDF and images",
+        "Multi-keyword search capabilities",
+        "Real-time notifications and comments",
+        "Collaborative editing features",
+        "Role-based access control system",
+        "Document approval workflows",
+        "MEGA cloud storage integration",
+      ],
+      challenges: [
+        "Implementing efficient OCR processing",
+        "Managing large document uploads",
+        "Real-time collaboration synchronization",
+        "Complex permission management",
+      ],
+      myRole:
+        "Full-stack Developer - Built RESTful APIs for document operations, integrated Tesseract.js OCR engine, implemented real-time features with Socket.IO, and designed role-based access control system.",
+    },
   ];
 
   return (
@@ -317,7 +374,7 @@ export default function Home() {
 
                 <div className="hidden md:flex items-center space-x-8">
                   <div className="flex space-x-10">
-                    {["home", "about", "experience", "skills", "projects", "contact"].map((section) => (
+                    {["home", "about", "experience", "skills", "projects", "freelance", "contact"].map((section) => (
                       <button
                         key={section}
                         onClick={() => scrollToSection(section)}
@@ -371,7 +428,7 @@ export default function Home() {
                   className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-200/50  rounded-xl"
                 >
                   <div className="px-4 py-6 space-y-4 rounded-2xl">
-                    {["home", "about", "experience", "skills", "projects", "contact"].map((section) => (
+                    {["home", "about", "experience", "skills", "projects", "freelance", "contact"].map((section) => (
                       <button
                         key={section}
                         onClick={() => scrollToSection(section)}
@@ -439,7 +496,7 @@ export default function Home() {
                           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                           className="absolute -top-4 -left-4 bg-gray-900 text-green-400 px-3 py-2 rounded-lg text-xs font-mono shadow-lg transform -rotate-12"
                         >
-                          const dev = "awesome";
+                          const dev = &quot;awesome&quot;;
                         </motion.div>
 
                         <motion.div
@@ -479,7 +536,7 @@ export default function Home() {
                     className="mb-4 mt-10"
                   >
                     <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-purple-700 text-sm font-medium">
-                      👋 Hello, I'm
+                      👋 Hello, I&apos;m
                     </span>
                   </motion.div>
 
@@ -1008,6 +1065,191 @@ export default function Home() {
                       </div>
                     </motion.div>
                   ))}
+                </motion.div>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Freelance Projects Section */}
+          <section id="freelance" className="py-20 px-4 bg-gradient-to-r from-cyan-50/30 via-blue-50/30 via-indigo-50/30 to-purple-50/30">
+            <div className="max-w-6xl mx-auto mt-10">
+              <motion.div
+                {...fadeInUp}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-500 via-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">
+                  Freelance Projects
+                </h2>
+
+                <motion.div
+                  variants={staggerContainer}
+                  whileInView="animate"
+                  viewport={{ once: false, amount: 0.2 }}
+                  className="space-y-8"
+                >
+                  {/* Multi-Brand Landing Page Management System */}
+                  <motion.div
+                    variants={fadeInUp}
+                    whileHover={{ y: -5, scale: 1.01 }}
+                    className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-200/50 hover:border-blue-300/50 transition-all duration-300 group shadow-sm hover:shadow-lg"
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <h3 className="text-2xl font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-200">
+                          Multi-Brand Landing Page Management System
+                        </h3>
+                        <h4 className="text-lg text-blue-500 mb-3 italic">Hong Anh Computer Company</h4>
+                      </div>
+                      <div className="text-blue-600 font-medium bg-blue-50 px-3 py-1 rounded-full text-sm">
+                        Team Size: 2
+                      </div>
+                    </div>
+
+                    <p className="text-gray-700 mb-6 leading-relaxed">
+                      Developed comprehensive landing page management system for multiple brands with drag-and-drop admin interface for content management.
+                    </p>
+
+                    <div className="grid md:grid-cols-2 gap-6 mb-6">
+                      <div>
+                        <h5 className="text-lg font-semibold text-gray-800 mb-3">Key Achievements</h5>
+                        <motion.div
+                          variants={staggerContainer}
+                          whileInView="animate"
+                          viewport={{ once: false, amount: 0.3 }}
+                          className="space-y-2"
+                        >
+                          {[
+                            "Built RESTful APIs for modular content sections including hero banners, product catalogs, testimonials, news, videos, and SEO optimization",
+                            "Designed MongoDB schema with Mongoose ODM for flexible multi-brand content structure and automated product synchronization",
+                            "Implemented responsive React-based admin panel with real-time preview, form validation, and media upload functionality",
+                            "Integrated with Hong Anh Computer Company's DevOps management system for automated product sync via GraphQL APIs and scheduled jobs",
+                            "Developed version control system for landing page changes with rollback capabilities and change tracking across multiple brands",
+                            "Optimized performance with efficient data fetching, caching strategies, and TypeScript for enhanced code reliability and scalability"
+                          ].map((item, index) => (
+                            <motion.div key={index} variants={fadeInUp} className="flex items-start space-x-3">
+                              <div className="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 rounded-full mt-2 flex-shrink-0"></div>
+                              <p className="text-gray-700 text-sm">{item}</p>
+                            </motion.div>
+                          ))}
+                        </motion.div>
+                      </div>
+
+                      <div>
+                        <h5 className="text-lg font-semibold text-gray-800 mb-3">Technologies Used</h5>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {["NestJS", "MongoDB", "React", "TypeScript", "Tailwind CSS", "GraphQL", "Mongoose ODM"].map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 bg-gradient-to-r from-cyan-100 via-blue-100 to-indigo-100 rounded-lg text-sm text-blue-700 border border-blue-200"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        
+                        <h5 className="text-lg font-semibold text-gray-800 mb-3">Key Features</h5>
+                        <ul className="space-y-1">
+                          {[
+                            "Drag-and-drop admin interface",
+                            "Multi-brand content management",
+                            "Real-time preview functionality",
+                            "Automated product synchronization",
+                            "Version control with rollback",
+                            "SEO optimization tools"
+                          ].map((feature, index) => (
+                            <li key={index} className="flex items-start space-x-2">
+                              <div className="w-1 h-1 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-gray-600 text-sm">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Medical Sample Collection Management System */}
+                  <motion.div
+                    variants={fadeInUp}
+                    whileHover={{ y: -5, scale: 1.01 }}
+                    className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-gray-200/50 hover:border-indigo-300/50 transition-all duration-300 group shadow-sm hover:shadow-lg"
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <h3 className="text-2xl font-semibold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors duration-200">
+                          Medical Sample Collection Management System
+                        </h3>
+                      </div>
+                      <div className="text-indigo-600 font-medium bg-indigo-50 px-3 py-1 rounded-full text-sm">
+                        Team Size: 2
+                      </div>
+                    </div>
+
+                    <p className="text-gray-700 mb-6 leading-relaxed">
+                      Developed comprehensive medical sample collection management system with full-stack implementation covering frontend and backend operations.
+                    </p>
+
+                    <div className="grid md:grid-cols-2 gap-6 mb-6">
+                      <div>
+                        <h5 className="text-lg font-semibold text-gray-800 mb-3">Key Achievements</h5>
+                        <motion.div
+                          variants={staggerContainer}
+                          whileInView="animate"
+                          viewport={{ once: false, amount: 0.3 }}
+                          className="space-y-2"
+                        >
+                          {[
+                            "Built RESTful APIs for core modules including sample collection orders, staff assignment, clinic/bus station management, supply inventory, and real-time notifications",
+                            "Designed and optimized MongoDB database schema with Mongoose ODM for complex medical workflow operations and role-based access control",
+                            "Implemented responsive React-based user interfaces with TypeScript and Ant Design for data entry, validation, and real-time updates",
+                            "Created interactive dashboards with Recharts displaying collection statistics, staff performance, and comprehensive operational analytics",
+                            "Developed automated notification system using OneSignal push notifications and Nodemailer for email alerts to stakeholders",
+                            "Integrated geocoding APIs for distance calculation and route optimization for sample collection staff",
+                            "Optimized query performance and implemented JWT-based authentication with role-based permissions for secure operations"
+                          ].map((item, index) => (
+                            <motion.div key={index} variants={fadeInUp} className="flex items-start space-x-3">
+                              <div className="w-1.5 h-1.5 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 rounded-full mt-2 flex-shrink-0"></div>
+                              <p className="text-gray-700 text-sm">{item}</p>
+                            </motion.div>
+                          ))}
+                        </motion.div>
+                      </div>
+
+                      <div>
+                        <h5 className="text-lg font-semibold text-gray-800 mb-3">Technologies Used</h5>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {["NestJS", "MongoDB", "React", "TypeScript", "Ant Design", "Recharts", "OneSignal", "Nodemailer", "JWT"].map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-lg text-sm text-indigo-700 border border-indigo-200"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        
+                        <h5 className="text-lg font-semibold text-gray-800 mb-3">Key Features</h5>
+                        <ul className="space-y-1">
+                          {[
+                            "Sample collection order management",
+                            "Staff assignment and tracking",
+                            "Real-time notifications system",
+                            "Interactive analytics dashboards",
+                            "Route optimization for staff",
+                            "Excel export with advanced formatting",
+                            "Role-based access control",
+                            "Geocoding and distance calculation"
+                          ].map((feature, index) => (
+                            <li key={index} className="flex items-start space-x-2">
+                              <div className="w-1 h-1 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="text-gray-600 text-sm">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </motion.div>
                 </motion.div>
               </motion.div>
             </div>
